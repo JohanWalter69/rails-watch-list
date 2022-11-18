@@ -1,4 +1,24 @@
-<h1><%= @list.name %></h1>
+<div class="navbar">
+  <%= link_to "Back home", lists_path %>
+  <%= link_to "Add a bookmark", new_list_bookmark_path(@list) %>
+</div>
 
-<%= link_to "Back home", lists_path %>
-<%= link_to "Add a bookmark", new_list_bookmark_path %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+
+
+<%@list.bookmarks.each do |bookmark| %>
+  <div class="card-product">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+    <div class="card-product-infos">
+      <h2><%= bookmark.movie.title %></h2>
+      <p><%= bookmark.movie.overview %></p>
+      <p><%= bookmark.movie.rating %></p>
+      <%= link_to "Delete", bookmark_path(bookmark), class:"btn btn-primary",
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+    </div>
+  </div>
+ <% end %>

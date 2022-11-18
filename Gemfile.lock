@@ -84,6 +84,7 @@ GEM
       tzinfo (~> 2.0)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
+    awesome_print (1.9.2)
     bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
@@ -230,6 +231,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
+  awesome_print (~> 1.9)
   bootsnap
   debug
   faker!

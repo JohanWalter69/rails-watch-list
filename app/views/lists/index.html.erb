@@ -1,9 +1,24 @@
-<h1>Lists</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>My lists</h1>
+    <a href="#"><%= link_to "Create a list", new_list_path, class:"btn btn-primary" %></a>
+  </div>
+</div>
 
-  <%@lists.each do |list| %>
-    <div class="card">
-      <%= list.name %>
-      <p><%= link_to "Show this list", list_path(list) %></p>
-    </div>
+
+<div class= "container d-flex flex-wrap">
+  <% @lists.each do |list| %>
+    <%= link_to list_path(list) do %>
+      <div class="card-trip"  style="width: 30%">
+      <%= image_tag "movie2.jpg" %>
+        <div class="card-trip-infos">
+          <div class= "custom-card-footer">
+            <h2><%= list.name %></h2>
+            <%= link_to "Delete", list_path(list), class:"btn btn-primary",
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-<%= link_to "Create a list", new_list_path %>
+</div>
