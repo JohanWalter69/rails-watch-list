@@ -1,38 +1,39 @@
-<div class="navbar">
+<div class="banner"
+style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>')">
   <%= link_to lists_path do %>
-  <i class="fa-solid fa-backward margin-right: "></i>
+  <i class="fa-solid fa-rotate-left"></i>
   <% end %>
-  <%# <%= link_to "Add a bookmark", new_list_bookmark_path(@list) %>
-</div>
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container">
     <h1><%= @list.name %></h1>
   </div>
 </div>
 
-<div class="container d-flex">
-  <%@list.bookmarks.each do |bookmark| %>
-    <div class="card-product">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-product-infos">
-        <h2><%= bookmark.movie.title %></h2>
-        <p><%= bookmark.movie.overview %></p>
-        <p><%= bookmark.movie.rating %></p>
-        <%= link_to bookmark_path(bookmark), class:"btn",
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-        <i class="fa-regular fa-trash-can"></i>
-        <% end %>
+<div class="custom-container d-flex">
+  <div class="card-product-container d-flex">
+    <%@list.bookmarks.each do |bookmark| %>
+      <div class="card-product">
+      <img src='<%=bookmark.movie.poster_url%>' alt="">
+        <div class="card-product-infos">
+          <h2><%= bookmark.movie.title %></h2>
+          <p><%= bookmark.movie.overview %></p>
+          <p><i class="fa-solid fa-star"></i><%= bookmark.movie.rating %></p>
+          <p><%= bookmark.comment %></p>
+          <%= link_to bookmark_path(bookmark), class:"btn",
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
   <div class="movie-form">
     <h3>Add a movie to your favorite list</h3>
     <%= simple_form_for [@list, @bookmark] do |f| %>
       <%= f.input :comment %>
       <%= f.association :movie %>
-      <%= f.submit "Add to your list", class: "btn btn-light" %>
+      <%= f.submit "Add to your list", class: "btn red-btn " %>
     <% end %>
   </div>
 </div>

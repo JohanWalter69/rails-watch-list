@@ -5,3 +5,12 @@
 @import "navbar";
 @import "banner";
 @import "form";
+@import "button";
+
+body {
+  background-color: #1d1c1a0f;
+}
+
+.container {
+  position: relative;
+}

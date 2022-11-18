@@ -74,3 +74,5 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
 gem "awesome_print", "~> 1.9"
+
+gem "cloudinary"

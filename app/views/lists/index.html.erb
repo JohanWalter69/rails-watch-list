@@ -1,7 +1,8 @@
 <div class="banner">
   <div class="container banner-content">
-    <h1>My lists</h1>
-    <a href="#"><%= link_to "Create a list", new_list_path, class:"btn btn-light" %></a>
+    <h1><span data-controller="typed-js"></span></h1>
+    <%# <h1 data-controller="typed-js">My lists</h1> %>
+    <a href="#"><%= link_to "Create a list", new_list_path, class:"btn btn-lg btn-light" %></a>
   </div>
 </div>
 
@@ -10,9 +11,12 @@
   <% @lists.each do |list| %>
     <%= link_to list_path(list) do %>
       <div class="card-trip"  style="width: 30%">
-      <%= image_tag "movie2.jpg" %>
+      <% if list.photo.attached? %>
+      <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+      <%# <%= image_tag "movie2.jpg" %>
         <div class="card-trip-infos">
-          <h2><%= list.name %></h2>
+          <h2><%= list.name.upcase %></h2>
           <%= link_to list_path(list), class:"btn btn-light",
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
           <i class="fa-regular fa-trash-can"></i>

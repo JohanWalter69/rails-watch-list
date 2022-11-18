@@ -1,9 +1,23 @@
 .movie-form {
-  width: 50%;
+  position: absolute;
+  right: 0;
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: #0e00000a;
+}
+
+
+.list-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid #0000001a;
   margin: 8px;
   padding: 8px;
+
 }

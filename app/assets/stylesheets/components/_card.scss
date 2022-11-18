@@ -1,17 +1,24 @@
+.card-product-container {
+  width: 65%;
+  flex-wrap: wrap;
+}
 .card-product {
   overflow: hidden;
-  height: 120px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 300px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
-  margin: 16px;
-  width: 90%;
+  margin: 8px;
+  width: 450px;
+
+  a {
+    text-decoration: none ;
+  }
 }
 
 .card-product img {
   height: 100%;
-  width: 120px;
+  width: 40%;
   object-fit: cover;
 }
 
@@ -19,6 +26,8 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  color:blue;
+
 }
 
 .card-product p {
@@ -33,15 +42,12 @@
   padding: 16px;
 }
 
-.custom-card-footer {
-
-}
-
 .card-trip {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 18px;
+  border-radius: 8px;
 }
 
 .card-trip > img {
@@ -65,8 +71,8 @@
 .card-trip .card-trip-infos {
   padding: 16px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
   position: relative;
 }
 
@@ -75,4 +81,16 @@
   right: 16px;
   top: -20px;
   width: 40px;
+
+}
+
+.card-trip-infos {
+  a {
+    text-decoration: none ;
+    color: black;
+  }
+}
+
+.fa-star{
+  color: #37aa83f7
 }
