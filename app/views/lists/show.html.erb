@@ -1,6 +1,8 @@
 <div class="navbar">
-  <%= link_to "Back home", lists_path %>
-  <%= link_to "Add a bookmark", new_list_bookmark_path(@list) %>
+  <%= link_to lists_path do %>
+  <i class="fa-solid fa-backward margin-right: "></i>
+  <% end %>
+  <%# <%= link_to "Add a bookmark", new_list_bookmark_path(@list) %>
 </div>
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
@@ -9,16 +11,28 @@
   </div>
 </div>
 
-
-<%@list.bookmarks.each do |bookmark| %>
-  <div class="card-product">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <div class="card-product-infos">
-      <h2><%= bookmark.movie.title %></h2>
-      <p><%= bookmark.movie.overview %></p>
-      <p><%= bookmark.movie.rating %></p>
-      <%= link_to "Delete", bookmark_path(bookmark), class:"btn btn-primary",
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+<div class="container d-flex">
+  <%@list.bookmarks.each do |bookmark| %>
+    <div class="card-product">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <div class="card-product-infos">
+        <h2><%= bookmark.movie.title %></h2>
+        <p><%= bookmark.movie.overview %></p>
+        <p><%= bookmark.movie.rating %></p>
+        <%= link_to bookmark_path(bookmark), class:"btn",
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+        <i class="fa-regular fa-trash-can"></i>
+        <% end %>
+      </div>
     </div>
+  <% end %>
+
+  <div class="movie-form">
+    <h3>Add a movie to your favorite list</h3>
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+      <%= f.input :comment %>
+      <%= f.association :movie %>
+      <%= f.submit "Add to your list", class: "btn btn-light" %>
+    <% end %>
   </div>
- <% end %>
+</div>

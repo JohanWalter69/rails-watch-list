@@ -7,7 +7,6 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    ap bookmark_params
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.list = @list
     ap @bookmark
